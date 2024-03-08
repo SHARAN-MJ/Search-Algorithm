@@ -1,106 +1,56 @@
-# Linear Search and Binary search
-## Aim:
-To write a program to perform linear search and binary search using python programming.
-## Equipment’s required:
-1.	Hardware – PCs
-2.	Anaconda – Python 3.7 Installation / Moodle-Code Runner
-## Algorithm:
-## Linear Search:
-1.	Start from the leftmost element of array[] and compare k with each element of array[] one by one.
-2.	If k matches with an element in array[] , return the index.
-3.	If k doesn’t match with any of elements in array[], return -1 or element not found.
-## Binary Search:
-1.	Set two pointers low and high at the lowest and the highest positions respectively.
-2.	Find the middle element mid of the array ie. arr[(low + high)/2]
-3.	If x == mid, then return mid.Else, compare the element to be searched with m.
-4.	If x > mid, compare x with the middle element of the elements on the right side of mid. This is done by setting low to low = mid + 1.
-5.	Else, compare x with the middle element of the elements on the left side of mid. This is done by setting high to high = mid - 1.
-6.	Repeat steps 2 to 5 until low meets high
+# REG NO: 212222240097
+# NAME: SHARAN MJ
+
+# Working on Images
+My submission
+Instructions for submission 
+1. The image should be a plant, Tree, flower or building
+
+2. The filename should be username.jpg
+
+3. The image should be Converted to gray scale and HSV 
+
+4. Display the H, S and V planes
+
+
+
 ## Program:
-i)	#Use a linear search method to match the item in a list.
+# Convert to Gray Scale and HSV:
 ```
-def linearSearch(array,n,k):
-    for i in range(0,n):
-         if (array[i] == k):
-            return i
-    return-1        
-    
-array = eval(input())
-k=eval(input())
-n=len(array)
-array.sort()
-result=linearSearch(array,n,k)
-if(result ==-1):
-    print(array)
-    print("Element not found")
-else:
-    print(array)
-    print("Element found at index: ", result)
-  
-
-
-```
-ii)	# Find the element in a list using Binary Search(Iterative Method).
+import cv2
+image = cv2.imread('Screenshot 2024-03-08 092502.png')
+grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 ```
 
-
-def binarySearchIter(array, k, low, high):
-    while low <= high:
-        mid = low + (high - low)//2
-        if array[mid] == k:
-            return mid
-        elif array[mid] < k:
-            low = mid + 1
-        else:
-            high = mid - 1
-    return -1        
-array = eval(input())
-array.sort()
-k = eval(input())
-result = binarySearchIter(array, k, 0, len(array)-1)
-if(result == -1):
-    print(array)
-    print("Element not found")
-else:
-    print(array)
-    print("Element found at index: ", result)
+## ORIGINAL OUTPUT:
+![Screenshot 2024-03-08 092502](https://github.com/SHARAN-MJ/Search-Algorithm/assets/119560305/ff7b5747-dbc0-4a67-9772-aebfe96a01a5)
 
 
+# Display H, S, and V Planes:
 
 ```
-iii)	# Find the element in a list using Binary Search (recursive Method).
+h, s, v = cv2.split(hsv_image)
+
+# Display the H, S, and V planes
+cv2.imshow('Hue', h)
+cv2.imshow('Saturation', s)
+cv2.imshow('Value', v)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 ```
+# OUTPUT:
 
-def BinarySearch(arr, k, low, high):
-    if high >= low:
-        mid = low + (high - low)//2
-        if arr[mid] == k:
-            return mid
-        elif arr[mid] > k:
-            return BinarySearch(arr, k, low, mid-1)
-        else:
-            return BinarySearch(arr, k, mid + 1, high)
-    else:
-        return -1
-arr = eval(input())
-arr.sort()
-k = eval(input()) # k is the element to be searched for
-result = BinarySearch(arr, k, 0,len(arr)-1)
-if(result == -1):
-    print(arr)
-    print("Element not found")
-else:
-    print(arr)
-    print("Element found at index: ", result)
+![Screenshot 2024-03-08 092752](https://github.com/SHARAN-MJ/Search-Algorithm/assets/119560305/1f80f847-9e77-4b2a-8afd-c0bad64c17e3)
+![Screenshot 2024-03-08 092818](https://github.com/SHARAN-MJ/Search-Algorithm/assets/119560305/8f8afc98-3a72-4ec0-b93a-1f1618a709d0)
+![Screenshot 2024-03-08 092806](https://github.com/SHARAN-MJ/Search-Algorithm/assets/119560305/1e91fe0d-87ca-446f-9b9e-98c2e501cbb0)
 
 
+# Save the Processed Image:
+```
+cv2.imwrite('username_gray.jpg', grayscale_image)
+cv2.imwrite('username_hsv.jpg', hsv_image)
 
 ```
-## Sample Input and Output
-
-![output](./Screenshot_20230125_022627.png)
-
-
-
-## Result
-Thus the linear search and binary search algorithm is implemented using python programming.
+# OUTPUT;
+![Uploading Screenshot 2024-03-08 092843.png…]()
